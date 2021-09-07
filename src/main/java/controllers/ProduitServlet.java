@@ -52,6 +52,7 @@ public class ProduitServlet extends HttpServlet {
 		
 		// redirection vers la listproduit.jsp
 		
+		request.setAttribute("data", produits);
 		RequestDispatcher rd = request.getRequestDispatcher("listproduits.jsp");
 		rd.forward(request, response);
 		// envoi de la page générée
@@ -82,16 +83,20 @@ public class ProduitServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		doGet( request,  response);
+		
+		//RequestDispatcher rd = request.getRequestDispatcher("listproduits.jsp");
+		//rd.forward(request, response);
 		// ici partie dao, jdbc
 		
 		
 		// envoi de la page générée
-		out.println("<HTML>");
+		/*out.println("<HTML>");
 		out.println("<HEAD><TITLE>Liste de produits</TITLE></HEAD>");
 		out.println("<BODY>");
 		out.println(libelle+" "+prix);
 		out.println("<H1>Ajout avec succès!</H1>");
-		out.println("</BODY></HTML>");
+		out.println("</BODY></HTML>");**/
 	}
 
 }

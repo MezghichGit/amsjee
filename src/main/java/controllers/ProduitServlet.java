@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +33,8 @@ public class ProduitServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		List<Produit> produits=null;
 		response.setContentType("text/html");
 		// construire un flux de sortie
 		PrintWriter out = response.getWriter();
@@ -39,19 +42,24 @@ public class ProduitServlet extends HttpServlet {
 		ProduitDAO dao = new ProduitDAO();
 		
 		try {
-			List<Produit> produits = dao.getAll();
+			produits = dao.getAll();
 			
 			System.out.println(produits);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		// redirection vers la listproduit.jsp
+		
+		RequestDispatcher rd = request.getRequestDispatcher("listproduits.jsp");
+		rd.forward(request, response);
 		// envoi de la page générée
-		out.println("<HTML>");
-		out.println("<HEAD><TITLE>Liste de produits</TITLE></HEAD>");
-		out.println("<BODY>");
-		out.println("<H1>Liste des produits</H1>");
-		out.println("</BODY></HTML>");
+		//out.println("<HTML>");
+		//out.println("<HEAD><TITLE>Liste de produits</TITLE></HEAD>");
+		//out.println("<BODY>");
+		//out.println("<H1>Liste des produits</H1>");
+		//out.println("</BODY></HTML>");
 	}
 
 	/**

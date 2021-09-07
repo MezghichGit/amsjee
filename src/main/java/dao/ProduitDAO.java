@@ -59,5 +59,26 @@ public class ProduitDAO {
 		return lp;
 		
 	}
+	
+	
+	public  void delete(int id) throws ClassNotFoundException
+	{
+		try {
+			Statement stmt = Util.open();
+			stmt.executeUpdate("delete from produit where id='"+id+"'");
+			//System.out.println("Delete");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				Util.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 
 }

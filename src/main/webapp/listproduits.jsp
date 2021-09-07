@@ -14,13 +14,15 @@
 
 <table align="center" border="1">
 
-<tr><th>ID</th><th>Libelle</th><th>Prix</th></tr>
+<tr><th>ID</th><th>Libelle</th><th>Prix</th><th>Supprimer</th><th>Modifier</th></tr>
 <% ArrayList<Produit> produits = (ArrayList<Produit>)request.getAttribute("data"); 
 for(Produit p : produits){ %>
 <tr>
 	<td><%=p.getId() %></td>
 	<td><%=p.getLibelle() %></td>
 	<td><%=p.getPrix() %></td>
+	<td><a href="DeleteProduit?id=<%=p.getId() %>">Supprimer</a></td>
+	<td><a href="#">Mettre à jour</a></td>
 </tr>
 <% } %>
 </table>

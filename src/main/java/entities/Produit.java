@@ -2,6 +2,10 @@ package entities;
 
 public class Produit {
 	
+	@Override
+	public String toString() {
+		return "Produit [id=" + id + ", libelle=" + libelle + ", prix=" + prix + "]";
+	}
 	private int id;
 	private String libelle;
 	private double prix;

@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +35,17 @@ public class ProduitServlet extends HttpServlet {
 		response.setContentType("text/html");
 		// construire un flux de sortie
 		PrintWriter out = response.getWriter();
+		
+		ProduitDAO dao = new ProduitDAO();
+		
+		try {
+			List<Produit> produits = dao.getAll();
+			
+			System.out.println(produits);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// envoi de la page générée
 		out.println("<HTML>");
 		out.println("<HEAD><TITLE>Liste de produits</TITLE></HEAD>");

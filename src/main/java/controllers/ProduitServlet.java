@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ProduitDAO;
+import entities.Produit;
+
 /**
  * Servlet implementation class ProduitServlet
  */
@@ -49,6 +52,15 @@ public class ProduitServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String libelle = request.getParameter("libelle");
 		String prix = request.getParameter("prix");
+		
+		ProduitDAO dao = new ProduitDAO();
+		
+		try {
+			dao.create(new Produit(libelle, Double.parseDouble(prix)));
+		} catch (NumberFormatException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		// ici partie dao, jdbc
 		

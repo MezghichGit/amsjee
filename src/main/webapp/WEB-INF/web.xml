@@ -22,6 +22,12 @@
   	<description></description>
   	<servlet-class>controllers.UpdateProduit</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>UpdateSaveProduit</servlet-name>
+  	<display-name>UpdateSaveProduit</display-name>
+  	<description></description>
+  	<servlet-class>controllers.UpdateSaveProduit</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ProduitServlet</servlet-name>
   	<url-pattern>/ProduitServlet</url-pattern>
@@ -33,5 +39,9 @@
   <servlet-mapping>
   	<servlet-name>UpdateProduit</servlet-name>
   	<url-pattern>/UpdateProduit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateSaveProduit</servlet-name>
+  	<url-pattern>/UpdateSaveProduit</url-pattern>
   </servlet-mapping>
 </web-app>

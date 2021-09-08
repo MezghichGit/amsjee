@@ -20,6 +20,7 @@
 	<table align="center">
 	<tr><td>Libelle :</td><td><input type="text" name="libelle" value="<%= produit.getLibelle()%>"/></td></tr>
 	<tr><td>Prix :</td><td><input type="text" name="prix" value="<%= produit.getPrix()%>"/></td></tr>
+	<input type="hidden" name="idProd" value="<%= produit.getId()%>"/>
 	<tr><td></td><td><input class="btn btn-warning"
 			type="submit" value="Mettre à jour" /></td></tr>
 	</table>

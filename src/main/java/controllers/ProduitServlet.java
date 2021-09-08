@@ -36,34 +36,32 @@ public class ProduitServlet extends HttpServlet {
 
 		String route = request.getServletPath();
 
-		/*switch (route) {
-		case "delete":
-			System.out.println("Delete");
-			break;
-		default:*/
+		/*
+		 * switch (route) { case "delete": System.out.println("Delete"); break; default:
+		 */
 
-			List<Produit> produits = null;
-			response.setContentType("text/html");
-			// construire un flux de sortie
-			PrintWriter out = response.getWriter();
+		List<Produit> produits = null;
+		response.setContentType("text/html");
+		// construire un flux de sortie
+		PrintWriter out = response.getWriter();
 
-			ProduitDAO dao = new ProduitDAO();
+		ProduitDAO dao = new ProduitDAO();
 
-			try {
-				produits = dao.getAll();
+		try {
+			produits = dao.getAll();
 
-				//System.out.println(produits);
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			// System.out.println(produits);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-			// redirection vers la listproduit.jsp
+		// redirection vers la listproduit.jsp
 
-			request.setAttribute("data", produits);
-			RequestDispatcher rd = request.getRequestDispatcher("listproduits.jsp");
-			rd.forward(request, response);
-		//}
+		request.setAttribute("data", produits);
+		RequestDispatcher rd = request.getRequestDispatcher("listproduits.jsp");
+		rd.forward(request, response);
+		// }
 	}
 
 	/**
@@ -76,18 +74,28 @@ public class ProduitServlet extends HttpServlet {
 		response.setContentType("text/html");
 		// construire un flux de sortie
 		PrintWriter out = response.getWriter();
+
+		String idProd = "null";
 		String libelle = request.getParameter("libelle");
 		String prix = request.getParameter("prix");
+		idProd = request.getParameter("idProd");
 
-		ProduitDAO dao = new ProduitDAO();
-
-		try {
-			dao.create(new Produit(libelle, Double.parseDouble(prix)));
-		} catch (NumberFormatException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		ProduitDAO dao = new ProduitDAO(); 
+		if (idProd == null)
+			try {
+				dao.create(new Produit(libelle, Double.parseDouble(prix)));
+			} catch (NumberFormatException | ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		else {
+			try {
+				dao.update(libelle,Double.parseDouble(prix), Integer.parseInt(idProd));
+			} catch (NumberFormatException | ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-
 		doGet(request, response);
 
 		// RequestDispatcher rd = request.getRequestDispatcher("listproduits.jsp");

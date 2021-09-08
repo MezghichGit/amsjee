@@ -115,5 +115,24 @@ public class ProduitDAO {
 		
 	}
 	
+	public  void update(String libelle, double prix, int id) throws ClassNotFoundException
+	{
+		try {
+			Statement stmt = Util.open();
+			stmt.executeUpdate("update produit set libelle='"+libelle+"',prix='"+prix+"'where id='"+id+"'");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				Util.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
 
 }

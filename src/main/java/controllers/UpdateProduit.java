@@ -45,7 +45,7 @@ public class UpdateProduit extends HttpServlet {
 		//System.out.println("Suppression avec succès");
 		
 		//ProduitServlet ps = new ProduitServlet();
-		//response.sendRedirect(request.getContextPath() +"/ProduitServlet" );
+		response.sendRedirect(request.getContextPath() +"/updateProduit.jsp" );
 	
 	}
 

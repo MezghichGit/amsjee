@@ -16,6 +16,12 @@
   	<description></description>
   	<servlet-class>controllers.DeleteProduit</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>UpdateProduit</servlet-name>
+  	<display-name>UpdateProduit</display-name>
+  	<description></description>
+  	<servlet-class>controllers.UpdateProduit</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ProduitServlet</servlet-name>
   	<url-pattern>/ProduitServlet</url-pattern>
@@ -23,5 +29,9 @@
   <servlet-mapping>
   	<servlet-name>DeleteProduit</servlet-name>
   	<url-pattern>/DeleteProduit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateProduit</servlet-name>
+  	<url-pattern>/UpdateProduit</url-pattern>
   </servlet-mapping>
 </web-app>

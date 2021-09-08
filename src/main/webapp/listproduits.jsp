@@ -23,7 +23,7 @@ for(Produit p : produits){ %>
 	<td><%=p.getLibelle() %></td>
 	<td><%=p.getPrix() %></td>
 	<td><a class="btn btn-danger" href="DeleteProduit?id=<%=p.getId() %>">Supprimer</a></td>
-	<td><a class="btn btn-warning" href="#">Mettre à jour</a></td>
+	<td><a class="btn btn-warning" href="UpdateProduit?id=<%=p.getId() %>">Mettre à jour</a></td>
 </tr>
 <% } %>
 </table>

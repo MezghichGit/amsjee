@@ -61,6 +61,8 @@ public class ProduitDAO {
 	}
 	
 	
+	
+	
 	public  void delete(int id) throws ClassNotFoundException
 	{
 		try {
@@ -80,5 +82,38 @@ public class ProduitDAO {
 			}
 		}
 	}
+	
+	public  Produit getProduit(int id) throws ClassNotFoundException
+	{
+		Produit p=null;
+		
+		try {
+			Statement stmt = Util.open();
+			ResultSet rs = stmt.executeQuery("select * from produit where id='"+id+"'");
+			
+			while (rs.next()) {
+				p = new Produit(rs.getInt("id"),rs.getString("libelle"),rs.getDouble("prix"));
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				Util.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+			
+	
+		return p;
+		
+	}
+	
 
 }

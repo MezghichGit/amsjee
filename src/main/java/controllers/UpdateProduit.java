@@ -1,6 +1,8 @@
 package controllers;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +39,7 @@ public class UpdateProduit extends HttpServlet {
 		Produit target =null;
 		try {
 			target = dao.getProduit(idProd);
-			System.out.println(target);
+			//System.out.println(target);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -45,7 +47,12 @@ public class UpdateProduit extends HttpServlet {
 		//System.out.println("Suppression avec succès");
 		
 		//ProduitServlet ps = new ProduitServlet();
-		response.sendRedirect(request.getContextPath() +"/updateProduit.jsp" );
+		
+		request.setAttribute("target", target);
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("updateProduit.jsp");
+	    dispatcher.forward(request, response);
+	    
+		//response.sendRedirect(request.getContextPath() +"/updateProduit.jsp" );
 	
 	}
 
